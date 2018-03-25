@@ -3,7 +3,11 @@ from pytesseract import pytesseract
 import base64
 import pandas as pd
 import find
-import vision, math
+import vision
+import math
+
+counter = 0
+
 
 # Main function, call this function only!
 # @param img_path str: The path of image, can be absolute or comparative
@@ -19,9 +23,13 @@ def closest_word(img_path):
 
 # Don't call functions below!
 def load_img_bytes(base64_img):
-    file = open("img.png", "wb")
+    global counter
+    counter += 1
+    filename = "img" + str(counter)
+    file = open(filename, "wb")
     file.write(base64.decodebytes(base64_img))
     file.close()
+    return filename
 
 
 def crop_image(img_path, x, y):
@@ -106,6 +114,7 @@ def trim_word(s):
         high -= 1
     return s[low:high + 1]
 
+
 def is_num(s):
     for c in s:
         if not c.isdigit():
@@ -116,7 +125,7 @@ def is_num(s):
 def closest_word_gv(file):
     x_threshold = 100
     y_threshold = 100
-    x_in,y_in = find.get_qr_top(file)
+    x_in, y_in = find.get_qr_top(file)
     file = open(file, "rb")
     l = vision.googlevision(vision.encode_image(file))
     ld = list()
@@ -142,7 +151,3 @@ def closest_word_gv(file):
             distminidx = i
 
     return ld[distminidx]['description']
-
-
-# test
-# print(closest_word_gv("test6.png"))
