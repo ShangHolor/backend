@@ -9,7 +9,7 @@ A Hololens application that enhances user experience when read hard copy books.
 
 ## Demo
 
-![![cover](https://github.com/ShangHolor/backend/blob/master/screenshots/cover.png)](https://youtu.be/oHxGKFy0GbU)
+[![cover](https://github.com/ShangHolor/backend/blob/master/screenshots/cover.png)](https://youtu.be/oHxGKFy0GbU)
 
 The image above is a link to the demo video, if you are not redirected to the video, you can also click [here](https://youtu.be/oHxGKFy0GbU).
 
